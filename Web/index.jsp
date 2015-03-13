@@ -55,17 +55,9 @@
     </ul>
 
     <h2>Työn aihe</h2>
-    <h2>Työn aihe</h2>
-    Lemmikkitietokantaan rekisteröityneet käyttäjät voivat lisätä lemmikkejään, luonnin yhteydessä lemmikille luodaan oma sivu. Käyttäjät voivat selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
-    Käyttäjät voivat myös tarkistaa palvelusta käyttäjän lähellä asuvia lemmikkejä postinumeron perusteella. Käyttäjät voivat lisätä lemmikkinsä ryhmiin, jotka ovat luotu käyttäjien toimesta.
-
-    <p>Keskeisimpiä toimintoja ovat:</p>
-    <p>- Kirjautuminen</p>
-    <p>- Lemmikin luominen/Muokkaus/Poisto</p>
-    <p>- Lemmikkien haku</p>
-    <p>- Lähellä asuvat lemmikit</p>
-    <p>- Ryhmiin lisääminen</p>
-    <p>- Ryhmän luominen</p>
+    Laita tähän aihekuvaus tai 
+    <a href="http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html">
+      linkki valmiiseen aiheeseen</a>.
 
     <!--
     <h2>Kirjautumistunnuksia testausta varten</h2>
