@@ -1,6 +1,6 @@
 # OhHa
 
-TARKEMPI DOKUMENTAATIO DOC/DOKUMENTAATIO
+TARKEMPI DOKUMENTAATIO --> DOC/DOKUMENTAATIO
 
 Lemmikkitietokantaan rekisteröityneet käyttäjät voivat lisätä lemmikkejään, luonnin yhteydessä lemmikille luodaan oma sivu. Käyttäjät voivat selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
 Käyttäjät voivat myös tarkistaa palvelusta käyttäjän lähellä asuvia lemmikkejä postinumeron perusteella. Käyttäjät voivat lisätä lemmikkinsä ryhmiin, jotka ovat luotu käyttäjien toimesta.
