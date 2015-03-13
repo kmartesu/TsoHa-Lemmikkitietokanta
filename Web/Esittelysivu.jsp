@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : 9.3.2015, 19:24:29
+    Document   : Esittelysivu
+    Created on : 13.3.2015, 12:50:21
     Author     : Kim Martesuo
 --%>
 
@@ -55,17 +55,17 @@
     </ul>
 
     <h2>Työn aihe</h2>
-    <h2>Työn aihe</h2>
     Lemmikkitietokantaan rekisteröityneet käyttäjät voivat lisätä lemmikkejään, luonnin yhteydessä lemmikille luodaan oma sivu. Käyttäjät voivat selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
     Käyttäjät voivat myös tarkistaa palvelusta käyttäjän lähellä asuvia lemmikkejä postinumeron perusteella. Käyttäjät voivat lisätä lemmikkinsä ryhmiin, jotka ovat luotu käyttäjien toimesta.
 
-    <p>Keskeisimpiä toimintoja ovat:</p>
-    <p>- Kirjautuminen</p>
-    <p>- Lemmikin luominen/Muokkaus/Poisto</p>
-    <p>- Lemmikkien haku</p>
-    <p>- Lähellä asuvat lemmikit</p>
-    <p>- Ryhmiin lisääminen</p>
-    <p>- Ryhmän luominen</p>
+    Keskeisimpiä toimintoja ovat:
+    - Kirjautuminen
+    - Lemmikin luominen/Muokkaus/Poisto
+    - Lemmikkien haku
+    - Lähellä asuvat lemmikit
+    - Ryhmiin lisääminen
+    - Ryhmän luominen
+
 
     <!--
     <h2>Kirjautumistunnuksia testausta varten</h2>
