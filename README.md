@@ -1,4 +1,6 @@
 # OhHa
+TESTISOVELLUKSEN OSOITE:
+http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
 
 TARKEMPI DOKUMENTAATIO --> DOC/DOKUMENTAATIO
 
