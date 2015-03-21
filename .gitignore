@@ -1,7 +1,7 @@
 #################
 ## Eclipse
 #################
-Web/META-INF/context.xml
+Web/
 *.pydevproject
 .project
 .metadata
