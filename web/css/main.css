@@ -1,0 +1,114 @@
+/* 
+    Created on : 20.3.2015, 14:47:40
+    Author     : Kim Martesuo
+*/
+
+
+#imaginary_container{
+    margin-top:10%; /* Don't copy this */
+    margin-bottom: 15%;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+/////////////////////////////////////////////////////////
+body {
+   /* margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border:1px solid black; */
+}
+
+
+.päädiv {
+    margin-left: 10%;
+    margin-right: 10%;
+    
+}
+
+.keskiosa {
+    height: 100%;
+}
+
+
+.nav-tabs>li {
+        width: 15%;
+        height: 15%;
+        size: 15%;
+}
+
+.nav-tabs {
+    top: 100px;
+    
+    //position:static;
+    
+}
+
+.nav-tabs>li>a {
+  background-color: white; 
+  border-color: #888888;
+  color:black;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: #FE9A2E;
+  border: 1px solid #888888;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border-color: #888888;
+  background-color: #FE9A2E;
+  color: white;
+}
+
+.nav-tabs>li.middle {
+    left: 5%;
+}
+
+.nav-tabs>li.right {
+    left: 10%;
+}
+
+.navbar-btn {
+    
+    position: fixed;
+    right: 15%;
+}
+
+.uusiLemmikkiButton{
+
+ text-decoration:none; 
+ text-align:center; 
+ padding:11px 32px; 
+ border:solid 1px #004F72; 
+ -webkit-border-radius:4px;
+ -moz-border-radius:4px; 
+ border-radius: 4px; 
+ font:13px Arial, Helvetica, sans-serif; 
+ font-weight:bold; 
+ color:#E5FFFF; 
+ background-color:#3BA4C7; 
+ background-image: -moz-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -webkit-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -o-linear-gradient(top, #3BA4C7 0%, #1982A5 100%); 
+ background-image: -ms-linear-gradient(top, #3BA4C7 0% ,#1982A5 100%); 
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1982A5', endColorstr='#1982A5',GradientType=0 ); 
+ background-image: linear-gradient(top, #3BA4C7 0% ,#1982A5 100%);   
+ -webkit-box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff; 
+ -moz-box-shadow: 0px 0px 2px #bababa,  inset 0px 0px 1px #ffffff;  
+ box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;  
+  
+  }
