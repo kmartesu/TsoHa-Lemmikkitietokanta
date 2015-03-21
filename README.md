@@ -2,6 +2,9 @@
 TESTISOVELLUKSEN OSOITE:
 http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
 
+ESITTELYSIVU:
+http://t-kmartesu.users.cs.helsinki.fi/Esittelysivu.html
+
 TARKEMPI DOKUMENTAATIO --> DOC/DOKUMENTAATIO
 
 Lemmikkitietokantaan rekisteröityneet käyttäjät voivat lisätä lemmikkejään, luonnin yhteydessä lemmikille luodaan oma sivu. Käyttäjät voivat selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
