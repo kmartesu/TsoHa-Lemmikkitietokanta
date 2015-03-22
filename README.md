@@ -2,6 +2,9 @@
 TESTISOVELLUKSEN OSOITE:
 http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
 
+HTML-DEMOON PÄÄSEE OSOITTEESTA:
+http://t-kmartesu.users.cs.helsinki.fi/Index.jsp
+
 ESITTELYSIVU:
 http://t-kmartesu.users.cs.helsinki.fi/Esittelysivu.html
 
