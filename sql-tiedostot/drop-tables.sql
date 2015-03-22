@@ -1,11 +1,11 @@
-DROP TABLE k‰ytt‰j‰;
-
-DROP TABLE postinumero;
+DROP TABLE kuuluu_ryhm√§√§n;
 
 DROP TABLE lemmikki;
 
+DROP TABLE k√§ytt√§j√§;
+
+DROP TABLE ryhm√§;
+
 DROP TABLE rotu;
 
-DROP TABLE kuuluu_ryhm‰‰n;
-
-DROP TABLE ryhm‰;
+DROP TABLE postinumero;
