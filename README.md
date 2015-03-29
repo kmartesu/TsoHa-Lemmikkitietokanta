@@ -1,4 +1,8 @@
 # OhHa
+
+Nyt sovellukseen voi kirjautua!                                                                                                
+Uusin versio sovelluksesta löytyy src ja web kansioista. 
+
 SOVELLUKSEEN PÄÄSEE OSOITTEESTA:
 http://t-kmartesu.users.cs.helsinki.fi/Lemmikkitietokanta/
 
