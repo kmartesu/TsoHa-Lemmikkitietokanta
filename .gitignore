@@ -1,8 +1,7 @@
 #################
 ## Eclipse
 #################
-web/META-INF/context.xml
-Web/META-INF/context.xml
+
 *.pydevproject
 .project
 .metadata
@@ -216,4 +215,4 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 
-Web/
+
