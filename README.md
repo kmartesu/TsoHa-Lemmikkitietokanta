@@ -5,7 +5,7 @@ http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
 SOVELLUKSEEN PÄÄSEE OSOITTEESTA:
 http://t-kmartesu.users.cs.helsinki.fi/Lemmikkitietokanta/
 
-käyttäjä: user
+käyttäjä: user                                                                                                                 
 salsana: password
 
 
