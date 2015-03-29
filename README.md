@@ -1,7 +1,4 @@
 # OhHa
-TESTISOVELLUKSEN OSOITE:
-http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
-
 SOVELLUKSEEN PÄÄSEE OSOITTEESTA:
 http://t-kmartesu.users.cs.helsinki.fi/Lemmikkitietokanta/
 
