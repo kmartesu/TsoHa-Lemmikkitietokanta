@@ -2,8 +2,11 @@
 TESTISOVELLUKSEN OSOITE:
 http://t-kmartesu.users.cs.helsinki.fi/ConnectionTest/
 
-HTML-DEMOON PÄÄSEE OSOITTEESTA:
-http://t-kmartesu.users.cs.helsinki.fi/Index.jsp
+SOVELLUKSEEN PÄÄSEE OSOITTEESTA:
+http://t-kmartesu.users.cs.helsinki.fi/Lemmikkitietokanta/
+käyttäjätunnuksina toimivat:
+käyttäjä: user
+salsana: password
 
 ESITTELYSIVU:
 http://t-kmartesu.users.cs.helsinki.fi/Esittelysivu.html
