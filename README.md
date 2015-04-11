@@ -2,6 +2,13 @@
 Sovelluksessa voi nyt lisätä, poistaa ja muokata lemmikkejä. Lemmikkiluokalla on toimintona täysi CRUD-setti.
 Muiden luokkien toimintoja työstetään...
 
+Lemmikin lisääminen: Kirjaudu sovellukseen -> Lemmikkini -> Uusi lemmikki -> syötä lemmikin tiedot ja paina tallenna
+
+Lemmikin muokkaaminen: Kirjaudu sovellukseen -> Lemmikkini -> paina muokattavan lemmikin 'Muokkaa'-nappia -> tee muutoksen ja paina 'Tallenna'-nappia
+
+Lemmikin poistaminen: Kirjaudu sovellukseen -> Lemmikkini -> paina poistettavan lemmikin 'Muokkaa'-nappia -> paina 'Poista'-nappia
+
+
 Nyt sovellukseen voi kirjautua!                                                                                                
 Uusin versio sovelluksesta löytyy src ja web kansioista. 
 
