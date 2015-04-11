@@ -8,6 +8,12 @@
 <%-- The list of normal or fragment attributes can be specified here: --%>
 <%@attribute name="pageTitle"%>
 <%@attribute name="kayttajaKirjautunut"%>
+<%@attribute name="lemmikit"%>
+<%@attribute name="virheViesti"%>
+<%@attribute name="rodut"%>
+<%@attribute name="viesti"%>
+<%@attribute name="virheet"%>
+<%@attribute name="muokattavaLemmikki"%>
 <%-- any content can be specified here e.g.: --%>
 <!DOCTYPE html>
 <html>

@@ -32,6 +32,30 @@
         <servlet-name>Uloskirjautuminen</servlet-name>
         <servlet-class>lemmikkitietokanta.Servlets.Uloskirjautuminen</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UusiLemmikki</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.UusiLemmikki</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TallennaLemmikki</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.TallennaLemmikki</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MuokkaaLemmikkia</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.MuokkaaLemmikkia</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TallennaMuutokset</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.TallennaMuutokset</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TallennaLemmikinMuutokset</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.TallennaLemmikinMuutokset</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PoistaLemmikki</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.PoistaLemmikki</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Listaustesti</servlet-name>
         <url-pattern>/Listaustesti</url-pattern>
@@ -63,6 +87,30 @@
     <servlet-mapping>
         <servlet-name>Uloskirjautuminen</servlet-name>
         <url-pattern>/Uloskirjautuminen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UusiLemmikki</servlet-name>
+        <url-pattern>/UusiLemmikki</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TallennaLemmikki</servlet-name>
+        <url-pattern>/TallennaLemmikki</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MuokkaaLemmikkia</servlet-name>
+        <url-pattern>/MuokkaaLemmikkia</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TallennaMuutokset</servlet-name>
+        <url-pattern>/TallennaMuutokset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TallennaLemmikinMuutokset</servlet-name>
+        <url-pattern>/TallennaLemmikinMuutokset</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PoistaLemmikki</servlet-name>
+        <url-pattern>/PoistaLemmikki</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

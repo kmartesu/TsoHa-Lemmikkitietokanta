@@ -1,13 +1,13 @@
 package lemmikkitietokanta.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import lemmikkitietokanta.Models.käyttäjä;
 import lemmikkitietokanta.Models.lemmikki;
 import static lemmikkitietokanta.Models.naytaJSP.naytaJSP;
@@ -17,7 +17,7 @@ import static lemmikkitietokanta.Models.naytaJSP.onKirjautunut;
  *
  * @author Kim Martesuo
  */
-public class lemmikkini extends HttpServlet {
+public class TallennaLemmikki extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,33 +32,41 @@ public class lemmikkini extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+       
         if(onKirjautunut(request, response)) {
             
-        
-        käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
-        //if (kirjautunut != null) {
-            request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
-            List<lemmikki> lemmikit = lemmikki.getLemmikkini(kirjautunut.getUsername());
-            //Mikäli käyttäjällä ei ole lemmikkejä.
-            if(lemmikit.isEmpty()) {
-                /*Virheviesti*/
-                request.setAttribute("virheViesti", "Sinulla ei ole ainuttakaan lemmikkiä!"); 
-            }
-            //Asetetaan lemmikkilista näkymälle
+            käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
+            
+            lemmikki uusiLemmikkini = new lemmikki();
+            uusiLemmikkini.setNimi(request.getParameter("Nimi"));
+            uusiLemmikkini.setVari(request.getParameter("Vari"));
+            int lemmikinRotu = Integer.parseInt(request.getParameter("Rotu"));
+            uusiLemmikkini.setRotuID(lemmikinRotu);
+            uusiLemmikkini.setOmistaja(kirjautunut.getUsername());
+            uusiLemmikkini.setKuvaus(request.getParameter("Kuvaus"));
+            String lemmikinIka = request.getParameter("lemmikinIka");
+            uusiLemmikkini.setIkaString(lemmikinIka);
+            
+            //Lisätään lemmikki kantaan
+            if(uusiLemmikkini.onkoKelvollinen()) {uusiLemmikkini.lisaaLemmikkiKantaan();}
             else {
-                request.setAttribute("lemmikit", lemmikit);
+                List<String> virheet = uusiLemmikkini.getVirheet();
+                request.setAttribute("virheet", virheet);
+                naytaJSP("UusiLemmikki.jsp", request, response);
             }
             
-        //}
+            request.setAttribute("viesti", "Lemmikki lisätty onnistuneesti");
+            request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
+            
+            
+        
        
-        /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Lemmikkini.jsp");
-        /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */
-        dispatcher.forward(request, response);
+            /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Lemmikkini.jsp");
+            /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */
+            dispatcher.forward(request, response);
         }
         else {response.sendRedirect("Index.jsp");}
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

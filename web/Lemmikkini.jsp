@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces = "true"%>
 <%@ taglib prefix = "t" tagdir = "/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <t:pohja pageTitle ="Etusivu">
     <body>
         <div class = "keskiosa">
@@ -15,31 +17,36 @@
             <li role="presentation" class="right"><a href="Tietoni">Tietoni</a></li>
             </ul>
             <div>
-                <div style =" margin-top: 5%"><a href="#" class="uusiLemmikkiButton"/>Uusi lemmikki</a></div>
+                <div style =" margin-top: 5%"><a href="UusiLemmikki" class="btn btn-primary"/>Uusi lemmikki</a></div>
                 <p></p>
-                <pre style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
+                <div style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
                  border-top-style: solid; border-top-color: grey;">
-                    <h3><center>Napero</center></h3>
-                        <img src = "Koira.jpg" style = "width: 300px; height: 400px">
-                        
-                        <p></p>
-                        <a href="#" class="uusiLemmikkiButton"/>Muokkaa</a>
-                        
-
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                        
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab 
-                        illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur 
-                        aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem 
-                        ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam 
-                        quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi 
-                        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-                        fugiat quo voluptas nulla pariatur?
-                        
-                </pre>
+                    <p><center>${virheViesti}</center></p>
+                    <p><center>${viesti}</center></p>
+                        <c:forEach var="lemmikki" items="${lemmikit}">
+                        <form action = "MuokkaaLemmikkia" method="POST">
+                            <div class="lemmikki" style = "border-style: solid; border-width: 1px; background-color: #f8f8f8;">
+                                <center><div>
+                                    <p align = "center"><h3><c:out value="${lemmikki.nimi}"/></h3>
+                                    <br>
+                                    <h4>${lemmikki.ika}</h4>
+                                    <br>
+                                    <center><img src = "${lemmikki.kuva}" style = "width: 300px; height: 400px"></center>
+                                    <br>
+                                    <pre>
+                                    <center><c:out value="${lemmikki.kuvaus}"/></p></center>
+                                    </pre>
+                                    </div></center>
+                                    <p><input id = "lemmikinID" type = "hidden" name ="lemmikinID" value ="${lemmikki.lemmikkiID}"></p>
+                                <div>
+                                    <center><button name="Muokkaa" class="btn btn-primary">Muokkaa</button></center>
+                                    <br>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                        </c:forEach>
+                </div>
             </div>
         </div>
     </body>
