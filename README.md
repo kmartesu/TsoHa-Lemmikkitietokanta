@@ -1,4 +1,6 @@
 # OhHa
+Sovelluksessa voi nyt lisätä, poistaa ja muokata lemmikkejä. Lemmikkiluokalla on toimintona täysi CRUD-setti.
+Muiden luokkien toimintoja työstetään...
 
 Nyt sovellukseen voi kirjautua!                                                                                                
 Uusin versio sovelluksesta löytyy src ja web kansioista. 
