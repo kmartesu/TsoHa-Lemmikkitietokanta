@@ -59,7 +59,6 @@ public class TallennaLemmikinMuutokset extends HttpServlet {
             
             request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
             
-            
             /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
             RequestDispatcher dispatcher = request.getRequestDispatcher("Lemmikkini.jsp");
             /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */

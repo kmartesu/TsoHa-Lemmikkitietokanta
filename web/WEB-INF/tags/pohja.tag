@@ -14,6 +14,13 @@
 <%@attribute name="viesti"%>
 <%@attribute name="virheet"%>
 <%@attribute name="muokattavaLemmikki"%>
+<%@attribute name="kayttajanTunnus"%>
+<%@attribute name="kayttajanNimi"%>
+<%@attribute name="kayttajanSukuNimi"%>
+<%@attribute name="kayttajanSahkoposti"%>
+<%@attribute name="kayttajanPostinumero"%>
+<%@attribute name="tietojenMuokkausViesti"%>
+
 <%-- any content can be specified here e.g.: --%>
 <!DOCTYPE html>
 <html>

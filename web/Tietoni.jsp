@@ -16,63 +16,61 @@
         </ul>
 
         <div>
-            <div style =" margin-top: 5%"><a href="#" class="uusiLemmikkiButton"/>Tallenna</a><a href="#" class="uusiLemmikkiButton"/>Poista</a></div>
+            <form action = "PoistaKayttaja" method="POST">
+                <div style =" margin-top: 1%"><button id="PoistaKayttaja" name="Poista" class="btn btn-danger">Poista</button></div>
+            </form>
+            
             <br></br>
+            
             <div style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
              border-top-style: solid; border-top-color: grey;">
             <br></br>
-            <form class="form-horizontal" align = "center">
-            <fieldset>
+            
+                <form class="form-horizontal" align = "center" action = "TallennaKayttajanMuokatutTiedot" method="POST">
+                <fieldset>
 
-            <!-- Form Name -->
-            <legend>Tietoni</legend>
+                <legend>Tietoni</legend>
+                <p>${tietojenMuokkausViesti}</p>
+                <!-- Etunimi-->
+                <div class="control-group">
+                  <label class="control-label" for="etunimi">Etunimi</label>
+                  <div class="controls">
+                    <input id="etunimi" name="etunimi" maxlength="20" type="text" value="${kayttajanNimi}" class="input-large">
+                  </div>
+                </div>
 
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="Käyttäjätunnus">Käyttäjätunnus</label>
-              <div class="controls">
-                <input id="Käyttäjätunnus" name="Käyttäjätunnus" type="text" placeholder="käyttäjätunnus" class="input-large">
+                <!-- Sukunimi-->
+                <div class="control-group">
+                  <label class="control-label" for="sukunimi">Sukunimi</label>
+                  <div class="controls">
+                    <input id="sukunimi" name="sukunimi" maxlength="20" type="text" value="${kayttajanSukuNimi}" class="input-large">
+                  </div>
+                </div>
 
-              </div>
-            </div>
+                <!-- Postinumero-->
+                <div class="control-group">
+                  <label class="control-label" for="Postinumero">Postinumero</label>
+                  <div class="controls">
+                    <select id="postinumero" name="postinumero" class="input-xlarge">
+                     <option value = "00980">00980</option>
+                     <!--<c:forEach var="postinumero" items="${postinumerot}">
+                       <option value = "${postinumero.numero}">${postinumero.postinumero}</option>
+                     </c:forEach>-->
+                    </select>
+                  </div>
+                </div>
 
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="Etunimi">Etunimi</label>
-              <div class="controls">
-                <input id="Etunimi" name="Etunimi" type="text" placeholder="etunimi" class="input-large">
+                <!-- Sähköposti-->
+                <div class="control-group">
+                  <label class="control-label" for="sahkoposti">Sähköposti</label>
+                  <div class="controls">
+                    <input id="sahkoposti" name="sahkoposti" maxlength="50" type="text" value="${kayttajanSahkoposti}" class="input-large">
+                  </div>
+                </div>
 
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="Sukunimi">Sukunimi</label>
-              <div class="controls">
-                <input id="Sukunimi" name="Sukunimi" type="text" placeholder="sukunimi" class="input-large">
-
-              </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-              <label class="control-label" for="Postinumero">Postinumero</label>
-              <div class="controls">
-                <input id="Postinumero" name="Postinumero" type="text" placeholder="Postinumero" class="input-large">
-
-              </div>
-            </div>
-
-            <div class="control-group">
-              <label class="control-label" for="Postinumero">Sähköposti</label>
-              <div class="controls">
-                <input id="Sähköposti" name="Sähköposti" type="text" placeholder="Sähköposti" class="input-large">
-
-              </div>
-            </div>
-
-            </fieldset>
-            </form>
+                </fieldset>
+                <div style =" margin-top: 5%"><button id="TallennaTietoni" name="TallennaTiedot" class="btn btn-primary">Tallenna</button></div>
+                </form>
             </div>
         </div>
 </t:pohja>    

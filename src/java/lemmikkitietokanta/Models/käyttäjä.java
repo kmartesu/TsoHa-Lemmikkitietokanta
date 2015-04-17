@@ -27,12 +27,119 @@ public class käyttäjä {
     public käyttäjä() {
     }
     
-    public String getUsername() {
-        return käyttäjätunnus;
+    public void poistaKayttajaKannasta() {
+        try {
+            System.out.println("Poistetaan kayttaja kannasta...");
+            
+            String sql = "DELETE FROM käyttäjä WHERE käyttäjätunnus = ?";
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, this.getUsername());
+            kysely.executeQuery();
+            System.out.println("Kayttaja poistettu kannasta onnistuneesti.");
+            
+            //Sulje yhteydet
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
+        } catch (SQLException ex) {
+            Logger.getLogger(käyttäjä.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void paivitaKayttajaKannassa() {
+        
+        System.out.println("Päivitetään käyttäjän tiedot kannassa...");
+        try {
+            String sql = "UPDATE käyttäjä SET etunimi = ?, sukunimi = ?, postinumero = ?, sähköposti = ? "
+                    + "WHERE käyttäjätunnus = ? ";
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, this.getEtunimi());
+            kysely.setString(2, this.getSukunimi());
+            kysely.setInt(3, this.getPostinumero());
+            kysely.setString(4, this.getSahkoposti());
+            kysely.setString(5, this.getUsername());
+            
+            kysely.executeQuery();
+            System.out.println("Käyttäjä päivitetty onnistnuneesti.");
+            
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
+        } catch (SQLException ex) {
+            Logger.getLogger(käyttäjä.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void lisaaKayttajaKantaan() {
+        //Tällä metodilla lisätään käyttäjä kantaan.
+        System.out.println("Aloitetaan käyttäjän lisääminen kantaan...");
+        try {    
+            String sql = "INSERT INTO käyttäjä VALUES"
+                    + "(?,?,?,?,?,?,?)";
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, this.getUsername());
+            kysely.setString(2, this.getSalasana());
+            kysely.setString(3, this.getEtunimi());
+            kysely.setString(4, this.getSalasana());
+            kysely.setString(5, this.getSahkoposti());
+            long time = System.currentTimeMillis();
+            java.sql.Timestamp aikaLeima = new java.sql.Timestamp(time);
+            kysely.setTimestamp(6, aikaLeima);
+            kysely.setInt(7, this.getPostinumero());
+            
+            kysely.executeQuery();
+            System.out.println("SQL-lause suoritettu...");
+            
+            //Sulje yhteydet
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(käyttäjä.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static käyttäjä getTiettyKayttaja(String tunnus) {
+        //Tällä metodilla haetaan tietyn käyttäjän tiedot kannasta pelkällä käyttäjätunnuksella
+        käyttäjä tempKayttaja = new käyttäjä();
+        try {
+            System.out.println("Haetaan käyttäjän tiedot kannasta...");
+            
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            String sql = "select käyttäjä.etunimi, käyttäjä.sukunimi, käyttäjä.sähköposti, käyttäjä.salasana "
+                    + "from käyttäjä "
+                    + "where käyttäjä.käyttäjätunnus = ?";
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, tunnus);
+            ResultSet rs = kysely.executeQuery();
+            
+            while(rs.next()) {
+                tempKayttaja.setEtunimi(rs.getString("etunimi"));
+                tempKayttaja.setSukunimi(rs.getString("sukunimi"));
+                tempKayttaja.setSähköposti(rs.getString("sähköposti"));
+                tempKayttaja.setSalasana(rs.getString("salasana"));
+            }
+            
+            
+            //Sulje yhteydet
+            try { rs.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
+        } catch (SQLException ex) {
+            Logger.getLogger(käyttäjä.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tempKayttaja;
     }
     
     public static List<käyttäjä> getKäyttäjät() {
-        System.out.println("get käyttäjät");
+        //Tällä metodilla haetaan kaikki käyttäjät kannasta ja palautetaan listana
+        System.out.println("Haetaan käyttäjät...");
         ArrayList<käyttäjä> käyttäjät = new ArrayList<käyttäjä>();
         try {
             Connection yhteys = Tietokantayhteys.getYhteys();
@@ -100,13 +207,33 @@ public class käyttäjä {
         //Käyttäjä palautetaan vasta täällä, kun resurssit on suljettu onnistuneesti.
         return kirjautunut;
     }
-
+    
+    
+    //Getterit
+    public String getUsername() {
+        return käyttäjätunnus;
+    }
+    public String getSalasana() {
+        return salasana;
+    }
+    public String getEtunimi() {
+        return etunimi;
+    }
+    public String getSukunimi() {
+        return sukunimi;
+    }
+    public String getSahkoposti() {
+        return sähköposti;
+    }
+    public int getPostinumero() {
+        return postinumero;
+    }
+    
+    //Setterit
     public void setKäyttäjätunnus(String käyttäjätunnus) {
-        System.out.println(käyttäjätunnus);
         this.käyttäjätunnus = käyttäjätunnus;
     }
     public void setSalasana(String salasana) {
-        System.out.println(salasana);
         this.salasana = salasana;
     }
     public void setEtunimi(String etunimi) {

@@ -7,7 +7,8 @@
 <%@tag description="Pohja lemmikkitietokannan index-sivulle" pageEncoding="UTF-8" trimDirectiveWhitespaces = "true"%>
 <%-- The list of normal or fragment attributes can be specified here: --%>
 <%@attribute name="virheViesti"%>
-
+<%@attribute name="kayttajaLuotu"%>
+<%@attribute name="kayttajaPoistettu"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,9 +24,11 @@
             <p style = "text-align:center"><img src = "cat-153337_1280.png" style = "width: 700px; height: 600px"></p>
         </div>
         <form class="form-horizontal" align = "center" action = "kirjautuminen"  method ="POST">
-            
+            <p>${kayttajaLuotu}</p>
+            <p>${kayttajaPoistettu}</p>
             <!--Käyttäjätunnus input-->
             <div class="control-group">
+              
               <label class="control-label" for="Kayttajatunnus">Käyttäjätunnus</label>
               <div class="controls">
                 <input id="Käyttäjätunnus" name="Kayttajatunnus" type="text" placeholder="Käyttäjätunnus" class="input-xlarge">
@@ -50,8 +53,11 @@
                   <p>${virheViesti}</p>
                   <button id="Kirjaudu sisään" name="Kirjaudu sisään" class="btn btn-primary">Kirjaudu sisään</button>
               </div>
-              <a href="Rekisteroidy.jsp">Luo käyttäjä</a>
             </div>
         </form>
+            <form action = "Rekisteroityminen"  method ="POST" align = "center">
+              <button id="Rekisteroidy" name="Rekisteroidy" class="btn btn-link">Luo käyttäjä</a>
+            </form>
+            
     </body>
 </html>

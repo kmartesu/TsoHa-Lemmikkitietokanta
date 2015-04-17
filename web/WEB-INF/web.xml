@@ -17,10 +17,6 @@
         <servlet-class>lemmikkitietokanta.Servlets.naytaJSP</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Rekisteroityminen</servlet-name>
-        <servlet-class>lemmikkitietokanta.Servlets.Rekisteröityminen</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Ryhma</servlet-name>
         <servlet-class>lemmikkitietokanta.Servlets.Ryhma</servlet-class>
     </servlet>
@@ -56,6 +52,22 @@
         <servlet-name>PoistaLemmikki</servlet-name>
         <servlet-class>lemmikkitietokanta.Servlets.PoistaLemmikki</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RekisteroiUusiKayttaja</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.RekisteroiUusiKayttaja</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Rekisteroityminen</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.Rekisteroityminen</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TallennaKayttajanMuokatutTiedot</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.TallennaKayttajanMuokatutTiedot</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PoistaKayttaja</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.PoistaKayttaja</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Listaustesti</servlet-name>
         <url-pattern>/Listaustesti</url-pattern>
@@ -71,10 +83,6 @@
     <servlet-mapping>
         <servlet-name>naytaJSP</servlet-name>
         <url-pattern>/naytaJSP</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Rekisteroityminen</servlet-name>
-        <url-pattern>/Rekister_ityminen</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Ryhma</servlet-name>
@@ -111,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>PoistaLemmikki</servlet-name>
         <url-pattern>/PoistaLemmikki</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RekisteroiUusiKayttaja</servlet-name>
+        <url-pattern>/RekisteroiUusiKayttaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Rekisteroityminen</servlet-name>
+        <url-pattern>/Rekisteroityminen</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TallennaKayttajanMuokatutTiedot</servlet-name>
+        <url-pattern>/TallennaKayttajanMuokatutTiedot</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PoistaKayttaja</servlet-name>
+        <url-pattern>/PoistaKayttaja</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

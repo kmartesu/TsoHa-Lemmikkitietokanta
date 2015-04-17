@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lemmikkitietokanta.Models.käyttäjä;
 import static lemmikkitietokanta.Models.naytaJSP.naytaJSP;
 import static lemmikkitietokanta.Models.naytaJSP.onKirjautunut;
 
@@ -27,7 +28,19 @@ public class Tietoni extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(onKirjautunut(request, response)) {naytaJSP("Tietoni.jsp", request, response);}
+        
+        if(onKirjautunut(request, response)) {
+            //Haetaan käyttäjän tiedot ja näytetään muokkauslomake
+            käyttäjä k = (käyttäjä)request.getSession().getAttribute("kirjautunut");
+            käyttäjä kTiedot = käyttäjä.getTiettyKayttaja(k.getUsername());
+            System.out.println("Viedään käyttäjän tiedot lomakkeelle...");
+            request.setAttribute("kayttajanTunnus", k.getUsername());
+            request.setAttribute("kayttajanNimi", kTiedot.getEtunimi());
+            request.setAttribute("kayttajanSukuNimi", kTiedot.getSukunimi());
+            request.setAttribute("kayttajanSahkoposti", kTiedot.getSahkoposti());
+            //request.setAttribute("kayttajanPostinumero", k.getPostinumero());
+            naytaJSP("Tietoni.jsp", request, response);
+        }
         else {response.sendRedirect("Index.jsp");}
     }
 

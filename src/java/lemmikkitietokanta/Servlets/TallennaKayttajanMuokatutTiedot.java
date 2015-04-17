@@ -1,19 +1,19 @@
 package lemmikkitietokanta.Servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static lemmikkitietokanta.Models.naytaJSP.asetaVirhe;
-import static lemmikkitietokanta.Models.naytaJSP.naytaJSP;
+import lemmikkitietokanta.Models.käyttäjä;
+import static lemmikkitietokanta.Models.naytaJSP.onKirjautunut;
 
 /**
  *
  * @author Kim Martesuo
  */
-public class Rekisteröityminen extends HttpServlet {
+public class TallennaKayttajanMuokatutTiedot extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -26,19 +26,30 @@ public class Rekisteröityminen extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
-        String kayttajatunnus = request.getParameter("kayttajatunnus");
-        String etunimi = request.getParameter("etunimi");
-        String sukunimi = request.getParameter("sukunimi");
-        String sahkoposti = request.getParameter("sahkoposti");
-        int postinumero = request.getIntHeader("postinumero");
-        String salasana = request.getParameter("salasana");
-        String varmistaSalasana = request.getParameter("varmistaSalasana");
-        
-        if(!salasana.equals(varmistaSalasana)) {
-            asetaVirhe("Salasanat eivät täsmää!", request);
-            naytaJSP("Rekisteroidy.jsp", request, response);
+         if(onKirjautunut(request, response)) {
+            
+            käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
+            //Luodaan uusi käyttäjä
+            käyttäjä uusiKayttaja = new käyttäjä();
+            //Asetetaan käyttäjän arvot
+            uusiKayttaja.setKäyttäjätunnus(kirjautunut.getUsername());
+            uusiKayttaja.setEtunimi(request.getParameter("etunimi"));
+            uusiKayttaja.setSukunimi(request.getParameter("sukunimi"));
+            uusiKayttaja.setSähköposti(request.getParameter("sahkoposti"));
+            uusiKayttaja.setPostinumero(Integer.parseInt("00980"));
+            
+            uusiKayttaja.paivitaKayttajaKannassa();
+            
+            request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
+            request.setAttribute("tietojenMuokkausViesti", "Tietoja muokattu onnistuneesti!");
+            
+            /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Tietoni");
+            dispatcher.forward(request, response);
         }
+        else {response.sendRedirect("Index.jsp");}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

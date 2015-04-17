@@ -1,0 +1,5 @@
+Css-kansio sis‰lt‰‰ css-tiedostot. META-INF sis‰lt‰‰ tiedoston context.xml, mik‰ sis‰lt‰‰ tietokannan tiedot. WEB-INF sis‰lt‰‰ tiedoston web.xml. mik‰ sis‰lt‰‰ tiedot mihin servletit johtavat. 
+
+WEB-INF kansio sis‰lt‰‰ myˆs tags-kansion, johon on sijoitettu n‰ykmien pohjatiedostot, eli tag-tiedostot. 
+
+N‰ykm‰‰n kuuluu JSP-p‰‰ttyiset tiedostot.

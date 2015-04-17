@@ -34,9 +34,7 @@ public class MuokkaaLemmikkia extends HttpServlet {
         
         if(onKirjautunut(request, response)) {
             käyttäjä k = (käyttäjä)request.getSession().getAttribute("kirjautunut");
-            //request.getAttribute("lemmikki");
-            System.out.println("Muokataan");
-            System.out.println(request.getParameter("lemmikinID"));
+            System.out.println("Muokataan lemmikkiä...");
             lemmikki muokattavaLemmikki = lemmikki.getKayttajanLemmikki(k, request.getParameter("lemmikinID"));
             request.setAttribute("muokattavaLemmikki", muokattavaLemmikki);
             List<Rotu> rotuLista = Rotu.getRodut();

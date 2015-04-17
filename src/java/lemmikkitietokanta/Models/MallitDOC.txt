@@ -1,0 +1,3 @@
+T‰‰ll‰ ovat kaikki malliluokat ja luokka naytaJSP joka sis‰lt‰‰ muutaman staattisen metodin.
+N‰m‰ vastaavat tietokannan tauluja.
+Tietokantayhteys.java sis‰lt‰‰ tarvittavat tietokantayhteyden luomiseen.
