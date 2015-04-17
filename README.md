@@ -1,4 +1,6 @@
 # OhHa
+Nyt voit luoda käyttäjän sovellukseen! Näet myös tietosi ja voit muokata niitä. Käyttäjän poistaminen onnistuu luonnollisesti myös.
+
 Sovelluksessa voi nyt lisätä, poistaa ja muokata lemmikkejä. Lemmikkiluokalla on toimintona täysi CRUD-setti.
 Muiden luokkien toimintoja työstetään...
 
