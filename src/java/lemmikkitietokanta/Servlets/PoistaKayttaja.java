@@ -26,6 +26,8 @@ public class PoistaKayttaja extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    //Servletti joka ohjaa käyttäjän poistamisen
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -33,14 +35,13 @@ public class PoistaKayttaja extends HttpServlet {
         if(onKirjautunut(request, response)) {
             
             käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
-            //Luodaan uusi käyttäjä
             
+            //Poistetaan käyttäjä kannasta
             kirjautunut.poistaKayttajaKannasta();
             request.getSession().removeAttribute("kirjautunut");
             request.setAttribute("kayttajaPoistettu", "Käyttäjä poistettu onnistuneesti!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("Index.jsp");
             dispatcher.forward(request, response);
-            //response.sendRedirect("Index.jsp");
         }
         else {response.sendRedirect("Index.jsp");}
     }

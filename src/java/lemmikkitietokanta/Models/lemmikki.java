@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Malliluokka lemmikeille
  * @author Kim Martesuo
  */
 public class lemmikki {
@@ -30,6 +30,7 @@ public class lemmikki {
     
     public lemmikki() {}
     
+    //Metodi joka poistaa lemmikin kannasta
     public void poistaLemmikkiKannasta() {
             System.out.println("Poistetaan lemmikki kannasta...");
         try {
@@ -50,7 +51,7 @@ public class lemmikki {
         
     }
     
-    
+    //Metodi joka päivittää lemmikin tiedot kannassa
     public void paivitaLemmikkiKannassa() {
         try { 
             System.out.println("Muokataan lemmikkiä...");
@@ -76,6 +77,7 @@ public class lemmikki {
         }
     }
     
+    //Metodi joka lisää lemmikin kantaan
     public void lisaaLemmikkiKantaan() {
         try { 
             System.out.println("Luodaan lemmikki...");
@@ -105,6 +107,7 @@ public class lemmikki {
         }
     }
     
+    //Metodi joka palauttaa käyttänä tietyn lemmikin
     public static lemmikki getKayttajanLemmikki(käyttäjä k, String lemmikinID) {
         lemmikki L = new lemmikki();
         try {
@@ -142,7 +145,7 @@ public class lemmikki {
         return L;
     }
     
-    
+    //Metodi joka palauttaa käyttäjän lemmikit
     public static List<lemmikki> getLemmikkini(String käyttäjätunnus) {
         ArrayList<lemmikki> lemmikkini = new ArrayList<lemmikki>();
         try {
@@ -183,6 +186,7 @@ public class lemmikki {
         return lemmikkini;
     }
     
+    //Tarkistaa onko tiedot kelvollisia
     public boolean onkoKelvollinen() {
         if(virheet.isEmpty()) return true;
         else return false;

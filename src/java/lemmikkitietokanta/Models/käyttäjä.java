@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 
 /**
- *
+ * Malliluokka käyttäjille
  * @author Kim Martesuo
  */
 public class käyttäjä {
@@ -27,6 +27,7 @@ public class käyttäjä {
     public käyttäjä() {
     }
     
+    //Metodi joka poistaa käyttäjän kannasta
     public void poistaKayttajaKannasta() {
         try {
             System.out.println("Poistetaan kayttaja kannasta...");
@@ -48,6 +49,7 @@ public class käyttäjä {
         
     }
     
+    //Metodi joka päivittää käyttäjän tiedot kannassa
     public void paivitaKayttajaKannassa() {
         
         System.out.println("Päivitetään käyttäjän tiedot kannassa...");
@@ -72,6 +74,7 @@ public class käyttäjä {
             Logger.getLogger(käyttäjä.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
     public void lisaaKayttajaKantaan() {
         //Tällä metodilla lisätään käyttäjä kantaan.
@@ -136,6 +139,7 @@ public class käyttäjä {
         }
         return tempKayttaja;
     }
+    
     
     public static List<käyttäjä> getKäyttäjät() {
         //Tällä metodilla haetaan kaikki käyttäjät kannasta ja palautetaan listana

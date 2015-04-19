@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Malliluokka roduille
  * @author Kim Martesuo
  */
 public class Rotu {
@@ -20,6 +20,7 @@ public class Rotu {
     
     public Rotu() {}
     
+    //Metodi hakee kaikki rodut kannasta
     public static List<Rotu> getRodut() {
         List<Rotu> rodut = new ArrayList<Rotu>();
         

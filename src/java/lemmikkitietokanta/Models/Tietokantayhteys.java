@@ -2,7 +2,7 @@ package lemmikkitietokanta.Models;
 
 
 /**
- *
+ * Luokka joka luo tietokantayhteyden
  * @author Kim Martesuo
  */
 

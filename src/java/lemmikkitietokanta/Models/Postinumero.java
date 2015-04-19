@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Malliluokka postinumerolle
  * @author Kim Martesuo
  */
 public class Postinumero {
@@ -21,6 +21,7 @@ public class Postinumero {
     
     public Postinumero() {}
     
+    //Metodi joka hakee kaikki postinumerot kannasta
     public static List<Postinumero> getPostinumerot() {
         List<Postinumero> numerot = new ArrayList<Postinumero>();
         
@@ -53,6 +54,7 @@ public class Postinumero {
         return numerot;
     }
     
+    //Setterit ja Getterit
     public void setPostinumero(int postinumero) {
         this.numero = postinumero;
     }
