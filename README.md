@@ -1,4 +1,5 @@
 # OhHa
+Lisätty toisen tietokohteen sivut ja testattu toimiviksi. 5 viikon vaatimusten mukaisesti.
 Nyt voit luoda käyttäjän sovellukseen! Näet myös tietosi ja voit muokata niitä. Käyttäjän poistaminen onnistuu luonnollisesti myös.
 
 Sovelluksessa voi nyt lisätä, poistaa ja muokata lemmikkejä. Lemmikkiluokalla on toimintona täysi CRUD-setti.
