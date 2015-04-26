@@ -1,6 +1,7 @@
 package lemmikkitietokanta.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import static lemmikkitietokanta.Models.naytaJSP.onKirjautunut;
  *
  * @author Kim Martesuo
  */
-public class lemmikkini extends HttpServlet {
+public class UusiHaku extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,39 +32,14 @@ public class lemmikkini extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         if(onKirjautunut(request, response)) {
-        
-            käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
-            request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
-            List<lemmikki> lemmikit = lemmikki.getLemmikkini(kirjautunut.getUsername());
-            //Mikäli käyttäjällä ei ole lemmikkejä.
-            if(lemmikit.isEmpty()) {
-                /*Virheviesti*/
-                request.setAttribute("virheViesti", "Sinulla ei ole ainuttakaan lemmikkiä!"); 
-            }
-            //Asetetaan lemmikkilista näkymälle
-            else {
-                request.setAttribute("lemmikit", lemmikit);
-            }
-            
-        /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Lemmikkini.jsp");
-        /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */
-        dispatcher.forward(request, response);
+            /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Haku.jsp");
+            /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */
+            dispatcher.forward(request, response);
         }
         else {response.sendRedirect("Index.jsp");}
-        
-        
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -30,6 +30,12 @@ public class lemmikki {
     
     public lemmikki() {}
     
+    //Metodi jolla haetaan lemmikit tietyllä nimellä
+    public static List<lemmikki> haeLemmikitHakusanalla(String hakusana) {
+        //Ei vielä implementoitu
+        return null;
+    }
+    
     //Metodi joka poistaa lemmikin kannasta
     public void poistaLemmikkiKannasta() {
             System.out.println("Poistetaan lemmikki kannasta...");

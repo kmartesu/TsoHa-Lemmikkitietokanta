@@ -30,17 +30,14 @@
                       </div>
 
 
-                    <!-- Text input-->
-
+                    <!-- Ikä-->
                       <label class="control-label" for="Ikä">Ikä</label>
                       <div class="controls">
                         <input id="Ikä" name="Ika" type="text" value="${muokattavaLemmikki.ika}" class="input-xlarge">
-
                       </div>
 
 
-                    <!-- Select Basic -->
-
+                    <!-- Rotu -->
                       <label class="control-label" for="Rotu">Rotu</label>
                       <div class="controls">
                         <select id="race" name="Rotu" class="input-xlarge">
@@ -51,17 +48,14 @@
                       </div>
 
 
-                    <!-- Text input-->
-
+                    <!-- Vari-->
                       <label class="control-label" for="Väri">Väri</label>
                       <div class="controls">
                         <input id="Väri" name="Vari" maxlength="20" type="text" value="${muokattavaLemmikki.vari}" class="input-xlarge">
                       </div>
-                      
-                        <input id="lemmikkiID" name="lemmikkiID" type="hidden" value="${muokattavaLemmikki.lemmikkiID}" class="input-xlarge">
+                      <input id="lemmikkiID" name="lemmikkiID" type="hidden" value="${muokattavaLemmikki.lemmikkiID}" class="input-xlarge">
 
-                    <!-- Textarea -->
-
+                    <!-- Kuvaus -->
                       <label class="control-label" for="Kuvaus">Kuvaus</label>
                       <div class="controls">                     
                         <textarea id="Kuvaus" name="Kuvaus" maxlength="500">${muokattavaLemmikki.kuvaus}</textarea>
@@ -71,8 +65,8 @@
                     </form>
                     <p></p>
                     <form class="form-horizontal" align = "center" action = "PoistaLemmikki" method = "POST">
-                    <input id="lemmikkiID" name="lemmikkiID" type="hidden" value="${muokattavaLemmikki.lemmikkiID}" class="input-xlarge">
-                    <button id="Poista" name="Poista" class="btn btn-primary">Poista</button>
+                        <input id="lemmikkiID" name="lemmikkiID" type="hidden" value="${muokattavaLemmikki.lemmikkiID}" class="input-xlarge">
+                        <button id="Poista" name="Poista" class="btn btn-primary">Poista</button>
                     </form>
                     </div>
                 </div>

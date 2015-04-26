@@ -2,10 +2,15 @@ package lemmikkitietokanta.Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import lemmikkitietokanta.Models.RyhmaMalli;
+import lemmikkitietokanta.Models.käyttäjä;
+import lemmikkitietokanta.Models.lemmikki;
 import static lemmikkitietokanta.Models.naytaJSP.naytaJSP;
 import static lemmikkitietokanta.Models.naytaJSP.onKirjautunut;
 
@@ -29,7 +34,21 @@ public class Ryhma extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if(onKirjautunut(request, response)) {naytaJSP("Ryhma.jsp", request, response);}
+        
+        if(onKirjautunut(request, response)) {
+        
+            käyttäjä kirjautunut = (käyttäjä)request.getSession().getAttribute("kirjautunut");
+            request.setAttribute("kayttajaKirjautunut", kirjautunut.getUsername());
+            List<RyhmaMalli> ryhmat = RyhmaMalli.getRyhmat();
+            
+            //Asetetaan ryhmalista näkymälle
+            request.setAttribute("ryhmat", ryhmat);
+            
+            /* Luodaan RequestDispatcher-olio, joka osaa näyttää Lemmikkini.jsp:n */
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Ryhma.jsp");
+            /* Pyydetään dispatcher-oliota näyttämään JSP-sivunsa */
+            dispatcher.forward(request, response);
+        }
         else {response.sendRedirect("Index.jsp");}
     }
 

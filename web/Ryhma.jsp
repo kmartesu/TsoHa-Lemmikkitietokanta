@@ -6,7 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" trimDirectiveWhitespaces = "true"%>
 <%@ taglib prefix = "t" tagdir = "/WEB-INF/tags" %>
-<t:pohja pageTitle ="Ryhmä">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<t:pohja pageTitle ="Ryhma">
     <div class = "keskiosa">
         <ul class="nav nav-tabs">
         <li role="presentation" ><a href="lemmikkini">Lemmikkini</a></li>
@@ -16,16 +18,20 @@
 
         <div>
             <p></p>
-            <pre style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
-             border-top-style: solid; border-top-color: grey;">
-                <h3><center>Kuulut ryhmiin:</center></h3>
-                <h3><center>Tähän listaus ryhmistä kuuluu jollakin lemmikillä</center></h3>
-
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </pre>
+            <c:forEach var="ryhma" items="${ryhmat}">
+                <div style = "border-style: solid; border-width: 1px; background-color: #f8f8f8;">
+                    <center>
+                        <div>
+                        <p align = "center"><h3><c:out value="${ryhma.ryhmaNimi}"/></h3>
+                        <br>
+                        <pre>
+                            <center><c:out value="${ryhma.kuvaus}"/></p></center>
+                        </pre>
+                        </div>
+                    </center>
+                </div>
+                <br>
+            </c:forEach>
         </div>
     </div>
 </t:pohja>

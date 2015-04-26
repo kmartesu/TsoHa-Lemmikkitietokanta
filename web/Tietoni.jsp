@@ -24,7 +24,7 @@
             
             <div style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
              border-top-style: solid; border-top-color: grey;">
-            <br></br>
+                <br></br>
             
                 <form class="form-horizontal" align = "center" action = "TallennaKayttajanMuokatutTiedot" method="POST">
                 <fieldset>
@@ -35,7 +35,7 @@
                 <div class="control-group">
                   <label class="control-label" for="etunimi">Etunimi</label>
                   <div class="controls">
-                    <input id="etunimi" name="etunimi" maxlength="20" type="text" value="${kayttajanNimi}" class="input-large">
+                      <input id="etunimi" name="etunimi" maxlength="20" type="text" value="${kayttajanNimi}" class="input-large">
                   </div>
                 </div>
 
@@ -64,7 +64,7 @@
                 <div class="control-group">
                   <label class="control-label" for="sahkoposti">Sähköposti</label>
                   <div class="controls">
-                    <input id="sahkoposti" name="sahkoposti" maxlength="50" type="text" value="${kayttajanSahkoposti}" class="input-large">
+                      <input id="sahkoposti" name="sahkoposti" maxlength="50" type="text" value="${kayttajanSahkoposti}" class="input-large">
                   </div>
                 </div>
 

@@ -17,13 +17,13 @@
             <pre align = "center" style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
              border-top-style: solid; border-top-color: white;">
                 
-            <font size = "4">   
-            Lemmikkitietokantaan voit lisätä lemmikkejäsi, luonnin yhteydessä lemmikille luodaan oma sivu. 
-            Voit selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
-            Voit myös tarkistaa palvelusta lähelläsi asuvia lemmikkejä postinumeron perusteella.
-            Voit lisätä lemmikkisi ryhmiin ja voit luoda ryhmiä itse.
-            </font>  
-            <h1 align = "center">Tervetuloa!</h1>
+                <font size = "4">   
+                Lemmikkitietokantaan voit lisätä lemmikkejäsi, luonnin yhteydessä lemmikille luodaan oma sivu. 
+                Voit selailla omia ja muiden käyttäjien lemmikkejä ja hakea lemmikkejä esimerkiksi rodun perusteella.
+                Voit myös tarkistaa palvelusta lähelläsi asuvia lemmikkejä postinumeron perusteella.
+                Voit lisätä lemmikkisi ryhmiin ja voit luoda ryhmiä itse.
+                </font>  
+                <h1 align = "center">Tervetuloa!</h1>
             </pre>
         </div>
     </div>

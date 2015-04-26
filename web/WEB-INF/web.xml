@@ -68,6 +68,10 @@
         <servlet-name>PoistaKayttaja</servlet-name>
         <servlet-class>lemmikkitietokanta.Servlets.PoistaKayttaja</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UusiHaku</servlet-name>
+        <servlet-class>lemmikkitietokanta.Servlets.UusiHaku</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Listaustesti</servlet-name>
         <url-pattern>/Listaustesti</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>PoistaKayttaja</servlet-name>
         <url-pattern>/PoistaKayttaja</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UusiHaku</servlet-name>
+        <url-pattern>/UusiHaku</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
