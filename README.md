@@ -1,4 +1,6 @@
 # OhHa
+Ryhmäsivu listaa nyt ryhmät!
+
 Lisätty toisen tietokohteen sivut ja testattu toimiviksi. 5 viikon vaatimusten mukaisesti.
 Nyt voit luoda käyttäjän sovellukseen! Näet myös tietosi ja voit muokata niitä. Käyttäjän poistaminen onnistuu luonnollisesti myös.
 
