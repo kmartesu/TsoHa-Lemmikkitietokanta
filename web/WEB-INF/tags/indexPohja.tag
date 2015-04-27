@@ -56,7 +56,7 @@
             </div>
         </form>
             <form action = "Rekisteroityminen"  method ="POST" align = "center">
-              <button id="Rekisteroidy" name="Rekisteroidy" class="btn btn-link">Luo käyttäjä</a>
+              <button id="Rekisteroidy" name="Rekisteroidy" class="btn btn-link">Luo käyttäjä</button>
             </form>
             
     </body>

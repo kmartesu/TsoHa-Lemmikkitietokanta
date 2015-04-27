@@ -21,6 +21,14 @@
 <%@attribute name="kayttajanPostinumero"%>
 <%@attribute name="tietojenMuokkausViesti"%>
 <%@attribute name="ryhmat"%>
+<%@attribute name="lemmikitHaulla"%>
+<%@attribute name="lemmikitHaullaViesti"%>
+<%@attribute name="lemmikitPostinumeroHaulla"%>
+<%@attribute name="lemmikitPostinumeroHaullaViesti"%>
+<%@attribute name="lemmikitRotuHaullaViesti"%>
+<%@attribute name="lemmikitRotuHaulla"%>
+<%@attribute name="toisenKayttajanNimi"%>
+
 
 <%-- any content can be specified here e.g.: --%>
 <!DOCTYPE html>
@@ -43,7 +51,7 @@
             <div id="imaginary_container">
                 <form action = "UusiHaku" method = "POST">
                     <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control"  placeholder="Haku" >
+                        <input type="text" class="form-control" name = "hakusana" placeholder="Hae lemmikkejä nimellä/postinumerolla/rodulla" >
                         <span class="input-group-addon">
                             <button type="submit">
                                 <span class="glyphicon glyphicon-search"></span>

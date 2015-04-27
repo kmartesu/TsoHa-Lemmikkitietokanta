@@ -18,9 +18,8 @@
             </ul>
             <div>
                 <div style =" margin-top: 5%"><a href="UusiLemmikki" class="btn btn-primary"/>Uusi lemmikki</a></div>
-                <p></p>
-                <div style = "border:1px groove grey; height: 1000px; border-bottom-color: white; border-bottom-style: solid;
-                 border-top-style: solid; border-top-color: grey;">
+                <br>
+                <div style = "border-top:1px groove grey; border-top-style: solid; border-top-color: grey;">
                     <p><center>${virheViesti}</center></p>
                     <p><center>${viesti}</center></p>
                         <c:forEach var="lemmikki" items="${lemmikit}">
@@ -28,10 +27,11 @@
                                 <div style = "border-style: solid; border-width: 1px; background-color: #f8f8f8;">
                                     <center><div>
                                         <p align = "center"><h3><c:out value="${lemmikki.nimi}"/></h3>
+                                        <h4>ikä: ${lemmikki.ika}</h4>
+                                        <h4>${lemmikki.vari}</h4>
+                                        <h4>${lemmikki.rotu}</h4>
                                         <br>
-                                        <h4>${lemmikki.ika}</h4>
-                                        <br>
-                                        <center><img src = "${lemmikki.kuva}" style = "width: 300px; height: 400px"></center>
+                                        <center><img src = "${lemmikki.kuva}" style = "width: 150px; height: 200px"></center>
                                         <br>
                                         <pre>
                                         <center><c:out value="${lemmikki.kuvaus}"/></p></center>

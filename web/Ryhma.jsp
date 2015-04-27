@@ -18,20 +18,22 @@
 
         <div>
             <p></p>
-            <c:forEach var="ryhma" items="${ryhmat}">
-                <div style = "border-style: solid; border-width: 1px; background-color: #f8f8f8;">
-                    <center>
-                        <div>
-                        <p align = "center"><h3><c:out value="${ryhma.ryhmaNimi}"/></h3>
-                        <br>
-                        <pre>
-                            <center><c:out value="${ryhma.kuvaus}"/></p></center>
-                        </pre>
-                        </div>
-                    </center>
-                </div>
-                <br>
-            </c:forEach>
+            <div style = "border-top:1px groove grey; border-top-style: solid; border-top-color: grey;">
+                <c:forEach var="ryhma" items="${ryhmat}">
+                    <div style = "border-style: solid; border-width: 1px; background-color: #f8f8f8;">
+                        <center>
+                            <div>
+                            <p align = "center"><h3><c:out value="${ryhma.ryhmaNimi}"/></h3>
+                            <br>
+                            <pre>
+                                <center><c:out value="${ryhma.kuvaus}"/></p></center>
+                            </pre>
+                            </div>
+                        </center>
+                    </div>
+                    <br>
+                </c:forEach>
+            </div>
         </div>
     </div>
 </t:pohja>

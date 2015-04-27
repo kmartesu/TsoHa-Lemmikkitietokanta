@@ -26,14 +26,122 @@ public class lemmikki {
     private Image kuva;
     private String omistaja;
     private int rotuID;
+    private String rotu;
     private List<String> virheet = new ArrayList<String>();
     
     public lemmikki() {}
     
+    //Metodi joka sulkee yhteydet tietokantaan
+    public static void suljeYhteydet(ResultSet rs, Connection yhteys, PreparedStatement kysely) {
+        //Sulje yhteydet
+        if(rs != null) {
+            try { rs.close(); } catch (Exception e) {}
+        }
+        try { kysely.close(); } catch (Exception e) {}
+        try { yhteys.close(); } catch (Exception e) {}
+    }
+    
+    //Metodi joka luo listan lemmikkejä result setistä
+    public static ArrayList<lemmikki> luoLemmikit(ResultSet rs) {
+        ArrayList<lemmikki> lemmikkiLista = new ArrayList<lemmikki>();
+        try {
+            while(rs.next()) {
+                lemmikki l = new lemmikki();
+                l.setNimi(rs.getString("nimi"));
+                l.setIka(rs.getInt("ikä"));
+                l.setVari(rs.getString("väri"));
+                l.setKuvaus(rs.getString("kuvaus"));
+                l.setOmistaja(rs.getString("käyttäjätunnus"));
+                l.setRotu(rs.getString("rotunimi"));
+                //Lisätään uusi lemmikki listaan
+                lemmikkiLista.add(l);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //palautetaan lista lemmikeillä
+        return lemmikkiLista;
+    }
+    
+    public static List<lemmikki> haeLemmikkiRodulla(String rotu) {
+        System.out.println("Haetaan lemmikki kannasta rodulla...");
+        ArrayList<lemmikki> lemmikitRodulla = new ArrayList<lemmikki>();
+        
+        try {
+            String rotuHakusana = rotu+"%";
+            if(!(rotu.length() == 1)) {
+                rotuHakusana = rotu.substring(1);
+                rotuHakusana = "_"+rotuHakusana+"%";
+            }
+            String sql = "SELECT lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.käyttäjätunnus, rotu.nimi as rotunimi"
+                    + " FROM lemmikki, käyttäjä, rotu WHERE lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus and rotu.rotuID = lemmikki.rotuID and rotu.nimi SIMILAR TO ?;";
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, rotuHakusana);
+            ResultSet rs = kysely.executeQuery();
+            lemmikitRodulla = luoLemmikit(rs);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lemmikitRodulla;
+    }
+    
+    //Metodi jolla haetaan lemmikit tietyllä postinumerolla
+    public static List<lemmikki> haeLemmikitPostinumerolla(String postinumero) {
+        System.out.println("Haetaan lemmikki kannasta postinumerolla...");
+        ArrayList<lemmikki> lemmikitPostinumerolla = new ArrayList<lemmikki>();
+        
+        try {
+            int postiNumero = Integer.parseInt(postinumero);
+            String sql = "SELECT lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.käyttäjätunnus, rotu.nimi as rotunimi"
+                    + " FROM lemmikki, käyttäjä, rotu WHERE lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus and käyttäjä.postinumero = ? and rotu.rotuID = lemmikki.rotuID;";
+            Connection yhteys = Tietokantayhteys.getYhteys();
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setInt(1, postiNumero);
+            ResultSet rs = kysely.executeQuery();
+            lemmikitPostinumerolla = luoLemmikit(rs);
+            
+            //Sulje yhteydet
+            suljeYhteydet(rs, yhteys, kysely);
+        } catch (SQLException ex) {
+            Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e) {
+            System.out.println("Hakusana ei ole postinumero.");
+        }
+        return lemmikitPostinumerolla;
+    }
+    
     //Metodi jolla haetaan lemmikit tietyllä nimellä
     public static List<lemmikki> haeLemmikitHakusanalla(String hakusana) {
-        //Ei vielä implementoitu
-        return null;
+        System.out.println("Haetaan lemmikki kannasta hakusanalla...");
+        ArrayList<lemmikki> lemmikitHaulla = new ArrayList<lemmikki>();
+        
+        try {
+            //Tarkistetaan onko hakusana 1 merkin mittainen.
+            String valmisHakusana = hakusana+"%";
+            if(!(hakusana.length() == 1)) {
+                valmisHakusana = hakusana.substring(1);
+                valmisHakusana = "_"+valmisHakusana+"%";
+            }
+            
+            String sql = "SELECT lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.käyttäjätunnus, rotu.nimi as rotunimi FROM lemmikki, rotu WHERE lemmikki.nimi SIMILAR TO ?"
+                    + " and rotu.rotuID = lemmikki.rotuID;";
+            Connection yhteys = Tietokantayhteys.getYhteys();  
+            PreparedStatement kysely = yhteys.prepareStatement(sql);
+            
+            kysely.setString(1, valmisHakusana);
+            ResultSet rs = kysely.executeQuery();
+            
+            lemmikitHaulla = luoLemmikit(rs);
+            //Sulje yhteydet
+            suljeYhteydet(rs, yhteys, kysely);
+        } catch (SQLException ex) {
+            Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lemmikitHaulla;
     }
     
     //Metodi joka poistaa lemmikin kannasta
@@ -49,8 +157,7 @@ public class lemmikki {
             System.out.println("Lemmikki poistettu onnistuneesti.");
             
             //Sulje yhteydet
-            try { kysely.close(); } catch (Exception e) {}
-            try { yhteys.close(); } catch (Exception e) {}
+            suljeYhteydet(null, yhteys, kysely);
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -76,8 +183,7 @@ public class lemmikki {
             System.out.println("Lemmikki muokattu onnistuneesti.");
             
             //Sulje yhteydet
-            try { kysely.close(); } catch (Exception e) {}
-            try { yhteys.close(); } catch (Exception e) {}
+            suljeYhteydet(null, yhteys, kysely);
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -104,10 +210,9 @@ public class lemmikki {
             System.out.println("SQL-lause suoritettu.");
             ids.next();
             this.lemmikkiID = ids.getInt(1);
+            
             //Sulje yhteydet
-            try { ids.close(); } catch (Exception e) {}
-            try { kysely.close(); } catch (Exception e) {}
-            try { yhteys.close(); } catch (Exception e) {}
+            suljeYhteydet(ids, yhteys, kysely);
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,9 +225,9 @@ public class lemmikki {
             System.out.println("Hateaan muokattava lemmikki kannasta...");
             
             Connection yhteys = Tietokantayhteys.getYhteys();
-            String sql = "select lemmikki.lemmikkiID, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.rotuID "
-                    + "from lemmikki, käyttäjä "
-                    + "where käyttäjä.käyttäjätunnus = ? and lemmikki.lemmikkiID = ? and lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus";
+            String sql = "select lemmikki.lemmikkiID, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, rotu.rotuID as rotunimi"
+                    + "from lemmikki, käyttäjä, rotu "
+                    + "where käyttäjä.käyttäjätunnus = ? and lemmikki.lemmikkiID = ? and lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus and rotu.rotuID = lemmikki.rotuID";
             PreparedStatement kysely = yhteys.prepareStatement(sql);
             
             kysely.setString(1, k.getUsername());
@@ -137,14 +242,11 @@ public class lemmikki {
                 L.setKuvaus(rs.getString("kuvaus"));
                 L.setKuva(null);
                 L.setOmistaja(k.getUsername());
-                L.setRotuID(rs.getInt("rotuID"));
+                L.setRotu(rs.getString("rotunimi"));
             }
             
-            
             //Sulje yhteydet
-            try { rs.close(); } catch (Exception e) {}
-            try { kysely.close(); } catch (Exception e) {}
-            try { yhteys.close(); } catch (Exception e) {}
+            suljeYhteydet(rs, yhteys, kysely);
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -158,33 +260,16 @@ public class lemmikki {
             //Luodaan yhteys tietokantaan ja haetaan lemmikit SQL-lauseen avulla.
             System.out.println("haetaan kayttajan lemmikit...");
             Connection yhteys = Tietokantayhteys.getYhteys();
-            String sql = "select lemmikki.lemmikkiID, lemmikki.käyttäjätunnus, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.kuva, lemmikki.rotuID "
-                    + "from lemmikki, käyttäjä "
-                    + "where käyttäjä.käyttäjätunnus = "+"'"+käyttäjätunnus+"'"+" and "+"lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus";
+            String sql = "select lemmikki.lemmikkiID, lemmikki.käyttäjätunnus, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, lemmikki.kuva, rotu.nimi as rotunimi "
+                    + "from lemmikki, käyttäjä, rotu "
+                    + "where käyttäjä.käyttäjätunnus = "+"'"+käyttäjätunnus+"'"+" and "+"lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus and rotu.rotuID = lemmikki.rotuID";
             PreparedStatement kysely = yhteys.prepareStatement(sql);
             ResultSet rs = kysely.executeQuery();
             System.out.println("SQL-kysely suoritettu.");
-            
-            //Niin kauan kun lemmikkejä on, luo lemmikki ja lisää listaan.
-            while(rs.next()) {
-                lemmikki l = new lemmikki();
-                l.setLemmikkiID(rs.getInt("lemmikkiID"));
-                l.setNimi(rs.getString("nimi"));
-                l.setVari(rs.getString("väri"));
-                l.setIka(rs.getInt("ikä"));
-                l.setKuvaus(rs.getString("kuvaus"));
-                l.setKuva(null);
-                l.setOmistaja(rs.getString("käyttäjätunnus"));
-                l.setRotuID(rs.getInt("rotuID"));
-                
-                //Lisää listaan
-                lemmikkini.add(l);
-            }
+            lemmikkini = luoLemmikit(rs);
             
             //Sulje yhteydet
-            try { rs.close(); } catch (Exception e) {}
-            try { kysely.close(); } catch (Exception e) {}
-            try { yhteys.close(); } catch (Exception e) {}
+            suljeYhteydet(rs, yhteys, kysely);
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -218,6 +303,9 @@ public class lemmikki {
           virheet.add("Kissan ikä tulee olla kokonaisluku.");
         }
     }
+    public void setRotu(String rotu) {
+        this.rotu = rotu;
+    }
     public void setKuvaus(String kuvaus) {
         this.kuvaus = kuvaus;
     }
@@ -232,6 +320,9 @@ public class lemmikki {
     }
     
     //Getters
+    public String getRotu() {
+        return rotu;
+    }
     public String getNimi() {
         return nimi;
     }
