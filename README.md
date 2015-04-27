@@ -1,4 +1,7 @@
 # OhHa
+Nyt lemmikkien hakeminen onnistuu lemmikin nimellä, postinumerolla ja rodulla.
+(rotuja ja postinumeroita on vain muutamia, lisää tulee myöhemmin).
+
 Ryhmäsivu listaa nyt ryhmät!
 
 Lisätty toisen tietokohteen sivut ja testattu toimiviksi. 5 viikon vaatimusten mukaisesti.
