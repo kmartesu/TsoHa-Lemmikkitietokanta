@@ -31,15 +31,6 @@ public class lemmikki {
     
     public lemmikki() {}
     
-    //Metodi joka sulkee yhteydet tietokantaan
-    public static void suljeYhteydet(ResultSet rs, Connection yhteys, PreparedStatement kysely) {
-        //Sulje yhteydet
-        if(rs != null) {
-            try { rs.close(); } catch (Exception e) {}
-        }
-        try { kysely.close(); } catch (Exception e) {}
-        try { yhteys.close(); } catch (Exception e) {}
-    }
     
     //Metodi joka luo listan lemmikkejä result setistä
     public static ArrayList<lemmikki> luoLemmikit(ResultSet rs) {
@@ -53,6 +44,7 @@ public class lemmikki {
                 l.setKuvaus(rs.getString("kuvaus"));
                 l.setOmistaja(rs.getString("käyttäjätunnus"));
                 l.setRotu(rs.getString("rotunimi"));
+               
                 //Lisätään uusi lemmikki listaan
                 lemmikkiLista.add(l);
             }
@@ -105,7 +97,9 @@ public class lemmikki {
             lemmikitPostinumerolla = luoLemmikit(rs);
             
             //Sulje yhteydet
-            suljeYhteydet(rs, yhteys, kysely);
+            try { rs.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NumberFormatException e) {
@@ -137,7 +131,9 @@ public class lemmikki {
             
             lemmikitHaulla = luoLemmikit(rs);
             //Sulje yhteydet
-            suljeYhteydet(rs, yhteys, kysely);
+            try { rs.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -157,7 +153,8 @@ public class lemmikki {
             System.out.println("Lemmikki poistettu onnistuneesti.");
             
             //Sulje yhteydet
-            suljeYhteydet(null, yhteys, kysely);
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -183,7 +180,8 @@ public class lemmikki {
             System.out.println("Lemmikki muokattu onnistuneesti.");
             
             //Sulje yhteydet
-            suljeYhteydet(null, yhteys, kysely);
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -212,7 +210,9 @@ public class lemmikki {
             this.lemmikkiID = ids.getInt(1);
             
             //Sulje yhteydet
-            suljeYhteydet(ids, yhteys, kysely);
+            try { ids.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -225,13 +225,16 @@ public class lemmikki {
             System.out.println("Hateaan muokattava lemmikki kannasta...");
             
             Connection yhteys = Tietokantayhteys.getYhteys();
-            String sql = "select lemmikki.lemmikkiID, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, rotu.rotuID as rotunimi"
-                    + "from lemmikki, käyttäjä, rotu "
-                    + "where käyttäjä.käyttäjätunnus = ? and lemmikki.lemmikkiID = ? and lemmikki.käyttäjätunnus = käyttäjä.käyttäjätunnus and rotu.rotuID = lemmikki.rotuID";
+            String sql = "select lemmikki.lemmikkiID, lemmikki.nimi, lemmikki.väri, lemmikki.ikä, lemmikki.kuvaus, rotu.rotuID as rotunimi "
+                    + "from lemmikki, rotu "
+                    + "where lemmikki.lemmikkiID = ? and rotu.rotuID = lemmikki.rotuID;";
             PreparedStatement kysely = yhteys.prepareStatement(sql);
+            int lemmikkiID = Integer.parseInt(lemmikinID);
             
-            kysely.setString(1, k.getUsername());
-            kysely.setInt(2, Integer.parseInt(lemmikinID));
+            //kysely.setString(1, k.getUsername());
+            kysely.setInt(1, lemmikkiID);
+            System.out.println(lemmikkiID);
+            System.out.println(sql);
             ResultSet rs = kysely.executeQuery();
             
             while(rs.next()) {
@@ -246,7 +249,9 @@ public class lemmikki {
             }
             
             //Sulje yhteydet
-            suljeYhteydet(rs, yhteys, kysely);
+            try { rs.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -266,10 +271,24 @@ public class lemmikki {
             PreparedStatement kysely = yhteys.prepareStatement(sql);
             ResultSet rs = kysely.executeQuery();
             System.out.println("SQL-kysely suoritettu.");
-            lemmikkini = luoLemmikit(rs);
+            //Ei voida käyttää luolemmikit metodia, koska tässä tarvitaan lemmikin ID:tä
+            while(rs.next()) {
+                lemmikki l = new lemmikki();
+                l.setNimi(rs.getString("nimi"));
+                l.setIka(rs.getInt("ikä"));
+                l.setVari(rs.getString("väri"));
+                l.setKuvaus(rs.getString("kuvaus"));
+                l.setOmistaja(rs.getString("käyttäjätunnus"));
+                l.setRotu(rs.getString("rotunimi"));
+                l.setLemmikkiID(rs.getInt("lemmikkiID"));
+                
+                lemmikkini.add(l);
+            }
             
             //Sulje yhteydet
-            suljeYhteydet(rs, yhteys, kysely);
+            try { rs.close(); } catch (Exception e) {}
+            try { kysely.close(); } catch (Exception e) {}
+            try { yhteys.close(); } catch (Exception e) {}
         } catch (SQLException ex) {
             Logger.getLogger(lemmikki.class.getName()).log(Level.SEVERE, null, ex);
         }

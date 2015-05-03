@@ -88,7 +88,7 @@ public class käyttäjä {
             kysely.setString(1, this.getUsername());
             kysely.setString(2, this.getSalasana());
             kysely.setString(3, this.getEtunimi());
-            kysely.setString(4, this.getSalasana());
+            kysely.setString(4, this.getSukunimi());
             kysely.setString(5, this.getSahkoposti());
             long time = System.currentTimeMillis();
             java.sql.Timestamp aikaLeima = new java.sql.Timestamp(time);

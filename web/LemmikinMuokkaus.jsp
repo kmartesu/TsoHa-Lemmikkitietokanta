@@ -13,8 +13,8 @@
         <div class = "keskiosa">
             <ul class="nav nav-tabs">
             <li role="presentation" class="active"><a href="lemmikkini">Lemmikkini</a></li>
-            <li role="presentation" class="middle"><a href="Ryhma.jsp">Ryhmät</a></li>
-            <li role="presentation" class="right"><a href="Tietoni.jsp">Tietoni</a></li>
+            <li role="presentation" class="middle"><a href="Ryhma">Ryhmät</a></li>
+            <li role="presentation" class="right"><a href="Tietoni">Tietoni</a></li>
             </ul>
                 
             <div>
@@ -26,7 +26,6 @@
                       <label class="control-label" for="Nimi">Nimi</label>
                       <div class="controls">
                         <input id="Nimi" name="Nimi" maxlength="20" type="text" value="${muokattavaLemmikki.nimi}" class="input-xlarge">
-
                       </div>
 
 
