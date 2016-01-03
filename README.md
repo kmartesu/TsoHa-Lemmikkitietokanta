@@ -1,4 +1,9 @@
 # OhHa
+
+SOVELLUS EI OLE ENÄÄ KÄYNNISSÄ!
+
+--------------------------------
+
 Nyt lemmikkien hakeminen onnistuu lemmikin nimellä, postinumerolla ja rodulla.
 (rotuja ja postinumeroita on vain muutamia, lisää tulee myöhemmin).
 
