@@ -1,4 +1,4 @@
-# OhHa
+# Lemmikkitietokanta
 
 SOVELLUS EI OLE ENÄÄ KÄYNNISSÄ!
 
